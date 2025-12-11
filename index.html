@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic List Page</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="toolbar">
+    <div class="column-selector">
+      <button class="btn" id="columnBtn">Columns</button>
+      <div class="column-dropdown" id="columnDropdown"></div>
+    </div>
+    <button class="btn" id="stickyBtn">Toggle Sticky</button>
+    <button class="btn" id="themeBtn">Toggle Theme</button>
+  </div>
+
+  <div class="search-panel" id="searchPanel">
+    <div class="search-label" id="searchLabel"></div>
+    <input type="text" class="search-input" id="searchInput" placeholder="Type to filter...">
+  </div>
+
+  <div class="table-container">
+    <table id="dataTable">
+      <thead id="tableHead"></thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

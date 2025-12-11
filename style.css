@@ -22,7 +22,7 @@
     font-variation-settings:
         "MORF" 15,
         "SHLN" 50;
-    font-size: 2rem;
+    font-size: 2.5rem;
 }
 
 * {
@@ -315,10 +315,15 @@ tbody tr:hover {
   margin-top: 1rem;
 }
 
+.modal-actions .btn {
+    font-size: 1rem;
+}
+
 #dataForm {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  font-size: 0.85rem;
 }
 
 #dataForm label {
@@ -332,6 +337,7 @@ tbody tr:hover {
   border-radius: 4px;
   background: var(--bg-secondary);
   color: var(--text-primary);
+  font-size: 0.85rem;
 }
 
 .action-btns {

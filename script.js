@@ -1,21 +1,16 @@
 const data = {
-  columns: ['ID', 'Name', 'Email', 'City', 'Country', 'Department', 'Position', 'Salary', 'Age', 'Status'],
+  columns: ['ID', 'Song Name', 'Movie Name', 'Music Director', 'Movie Director', 'Artist', 'Singers', 'Genre'],
   rows: [
-    ['1001', 'Sarah Johnson', 'sarah.j@company.com', 'New York', 'USA', 'Engineering', 'Senior Developer', '$95,000', '32', 'Active'],
-    ['1002', 'Michael Chen', 'michael.c@company.com', 'San Francisco', 'USA', 'Design', 'UI Designer', '$78,000', '28', 'Active'],
-    ['1003', 'Emma Williams', 'emma.w@company.com', 'London', 'UK', 'Marketing', 'Marketing Manager', '$85,000', '35', 'Active'],
-    ['1004', 'James Brown', 'james.b@company.com', 'Toronto', 'Canada', 'Sales', 'Sales Representative', '$62,000', '26', 'Active'],
-    ['1005', 'Sophia Martinez', 'sophia.m@company.com', 'Berlin', 'Germany', 'Engineering', 'DevOps Engineer', '$88,000', '30', 'Active'],
-    ['1006', 'Oliver Davis', 'oliver.d@company.com', 'Sydney', 'Australia', 'Finance', 'Financial Analyst', '$72,000', '29', 'Inactive'],
-    ['1007', 'Isabella Garcia', 'isabella.g@company.com', 'Madrid', 'Spain', 'HR', 'HR Coordinator', '$58,000', '27', 'Active'],
-    ['1008', 'William Miller', 'william.m@company.com', 'Paris', 'France', 'Engineering', 'Backend Developer', '$82,000', '31', 'Active'],
-    ['1009', 'Ava Rodriguez', 'ava.r@company.com', 'Tokyo', 'Japan', 'Design', 'Product Designer', '$76,000', '28', 'Active'],
-    ['1010', 'Liam Anderson', 'liam.a@company.com', 'Singapore', 'Singapore', 'Operations', 'Operations Manager', '$92,000', '36', 'Inactive'],
-    ['1011', 'Mia Thompson', 'mia.t@company.com', 'Mumbai', 'India', 'Engineering', 'Frontend Developer', '$68,000', '25', 'Active'],
-    ['1012', 'Noah White', 'noah.w@company.com', 'Amsterdam', 'Netherlands', 'Marketing', 'Content Strategist', '$64,000', '29', 'Active'],
-    ['1013', 'Charlotte Lee', 'charlotte.l@company.com', 'Seoul', 'South Korea', 'Sales', 'Account Executive', '$70,000', '30', 'Active'],
-    ['1014', 'Elijah Harris', 'elijah.h@company.com', 'Dublin', 'Ireland', 'Finance', 'Budget Analyst', '$66,000', '28', 'Active'],
-    ['1015', 'Amelia Clark', 'amelia.c@company.com', 'Vancouver', 'Canada', 'Engineering', 'Tech Lead', '$105,000', '34', 'Active']
+    ['1001', 'Tum Hi Ho', 'Aashiqui 2', 'Mithoon', 'Mohit Suri', 'Arijit Singh', 'Arijit Singh', 'Romantic'],
+    ['1002', 'Chaiyya Chaiyya', 'Dil Se..', 'A. R. Rahman', 'Mani Ratnam', 'Shah Rukh Khan', 'Sukhwinder Singh, Sapna Awasthi', 'Bollywood'],
+    ['1003', 'Kal Ho Naa Ho', 'Kal Ho Naa Ho', 'Shankar-Ehsaan-Loy', 'Nikkhil Advani', 'Sonu Nigam', 'Sonu Nigam', 'Bollywood'],
+    ['1004', 'Bulleya', 'Ae Dil Hai Mushkil', 'Pritam', 'Karan Johar', 'Amit Mishra, Shilpa Rao', 'Amit Mishra, Shilpa Rao', 'Sufi Rock'],
+    ['1005', 'Ghoomar', 'Padmaavat', 'Sanjay Leela Bhansali', 'Sanjay Leela Bhansali', 'Shreya Ghoshal, Swaroop Khan', 'Shreya Ghoshal, Swaroop Khan', 'Folk'],
+    ['1006', 'Jai Ho', 'Slumdog Millionaire', 'A. R. Rahman', 'Danny Boyle', 'A. R. Rahman, Sukhwinder Singh', 'A. R. Rahman, Sukhwinder Singh', 'Bollywood'],
+    ['1007', 'Tera Ban Jaunga', 'Kabir Singh', 'Akhil Sachdeva, Tulsi Kumar', 'Sandeep Reddy Vanga', 'Akhil Sachdeva, Tulsi Kumar', 'Akhil Sachdeva, Tulsi Kumar', 'Romantic'],
+    ['1008', 'Apna Time Aayega', 'Gully Boy', 'Dub Sharma, Divine', 'Zoya Akhtar', 'Ranveer Singh, Divine', 'Ranveer Singh, Divine', 'Hip Hop'],
+    ['1009', 'Bekhayali', 'Kabir Singh', 'Sachet-Parampara', 'Sandeep Reddy Vanga', 'Sachet Tandon', 'Sachet Tandon', 'Rock'],
+    ['1010', 'Ghar More Pardesiya', 'Kalank', 'Pritam', 'Abhishek Varman', 'Shreya Ghoshal, Vaishali Mhade', 'Shreya Ghoshal, Vaishali Mhade', 'Classical']
   ]
 };
 
@@ -23,7 +18,8 @@ const state = {
   visibleColumns: new Set(data.columns),
   activeSearchColumn: null,
   searchValue: '',
-  stickyEnabled: true
+  stickyEnabled: true,
+  editingRowId: null
 };
 
 const els = {
@@ -36,7 +32,13 @@ const els = {
   themeBtn: document.getElementById('themeBtn'),
   searchPanel: document.getElementById('searchPanel'),
   searchInput: document.getElementById('searchInput'),
-  searchLabel: document.getElementById('searchLabel')
+  searchLabel: document.getElementById('searchLabel'),
+  addBtn: document.getElementById('addBtn'),
+  dataModal: document.getElementById('dataModal'),
+  modalTitle: document.getElementById('modalTitle'),
+  dataForm: document.getElementById('dataForm'),
+  saveBtn: document.getElementById('saveBtn'),
+  cancelBtn: document.getElementById('cancelBtn')
 };
 
 function getVisibleColumns() {
@@ -64,12 +66,19 @@ function renderTable() {
   
   els.tableHead.innerHTML = `<tr>${cols.map(col => 
     `<th data-col="${col}" class="${state.activeSearchColumn === col ? 'active' : ''}">${col}</th>`
-  ).join('')}</tr>`;
+  ).join('')}<th>Actions</th></tr>`;
 
   const filtered = filterRows();
   els.tableBody.innerHTML = filtered.map(row => {
-    const cells = indices.map(idx => row[idx]).join('</td><td>');
-    return `<tr><td>${cells}</td></tr>`;
+    const rowId = row[0];
+    const cells = indices.map(idx => `<td>${row[idx]}</td>`).join('');
+    return `<tr data-id="${rowId}">
+              ${cells}
+              <td>
+                <button class="btn action-btn" onclick="openModal('${rowId}')">Edit</button>
+                <button class="btn action-btn" onclick="deleteRow('${rowId}')">Delete</button>
+              </td>
+            </tr>`;
   }).join('');
 
   updateStickyClass();
@@ -104,6 +113,72 @@ function hideSearchPanel() {
   state.searchValue = '';
   els.searchPanel.classList.remove('show');
   renderTable();
+}
+
+function openModal(rowId = null) {
+  state.editingRowId = rowId;
+  els.dataForm.innerHTML = '';
+  
+  const rowData = rowId ? data.rows.find(r => r[0] === rowId) : null;
+
+  data.columns.forEach((col, index) => {
+    const isIdField = index === 0;
+    const value = rowData ? rowData[index] : (isIdField ? generateNewId() : '');
+    
+    const label = document.createElement('label');
+    label.textContent = col;
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = col;
+    input.value = value;
+    if (isIdField) {
+      input.readOnly = true;
+    }
+
+    els.dataForm.appendChild(label);
+    els.dataForm.appendChild(input);
+  });
+
+  els.modalTitle.textContent = rowId ? 'Edit Data' : 'Add Data';
+  els.dataModal.style.display = 'block';
+}
+
+function closeModal() {
+  els.dataModal.style.display = 'none';
+  state.editingRowId = null;
+}
+
+function saveData() {
+  const formData = new FormData(els.dataForm);
+  const newRow = data.columns.map(col => formData.get(col));
+
+  if (state.editingRowId) {
+    const rowIndex = data.rows.findIndex(r => r[0] === state.editingRowId);
+    if (rowIndex !== -1) {
+      data.rows[rowIndex] = newRow;
+    }
+  } else {
+    data.rows.push(newRow);
+  }
+  
+  renderTable();
+  closeModal();
+}
+
+function deleteRow(rowId) {
+  if (confirm('Are you sure you want to delete this row?')) {
+    const rowIndex = data.rows.findIndex(r => r[0] === rowId);
+    if (rowIndex !== -1) {
+      data.rows.splice(rowIndex, 1);
+      renderTable();
+    }
+  }
+}
+
+function generateNewId() {
+  const maxId = data.rows.reduce((max, row) => Math.max(max, parseInt(row[0], 10)), 1000);
+  return (maxId + 1).toString();
 }
 
 els.tableHead.addEventListener('click', (e) => {
@@ -155,9 +230,16 @@ els.themeBtn.addEventListener('click', () => {
   document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark');
 });
 
+els.addBtn.addEventListener('click', () => openModal());
+els.saveBtn.addEventListener('click', saveData);
+els.cancelBtn.addEventListener('click', closeModal);
+
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.column-selector')) {
     els.columnDropdown.classList.remove('show');
+  }
+  if (e.target === els.dataModal) {
+    closeModal();
   }
 });
 

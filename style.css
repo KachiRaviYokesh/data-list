@@ -237,6 +237,63 @@ tbody tr:hover {
   background: var(--accent);
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: var(--bg-primary);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  width: 80%;
+  max-width: 500px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px var(--shadow);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+#dataForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+#dataForm label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+#dataForm input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.action-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+}
+
 @media (max-width: 768px) {
   body {
     padding: 0.5rem;
@@ -253,5 +310,14 @@ tbody tr:hover {
 
   .table-container {
     max-height: calc(100vh - 200px);
+  }
+
+  .modal-content {
+    width: 90%;
+    margin: 10% auto;
+  }
+
+  #dataForm {
+    grid-template-columns: 1fr;
   }
 }

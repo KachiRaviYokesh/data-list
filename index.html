@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="toolbar">
+    <button class="btn" id="addBtn">Add Data</button>
     <div class="column-selector">
       <button class="btn" id="columnBtn">Columns</button>
       <div class="column-dropdown" id="columnDropdown"></div>
@@ -26,6 +27,19 @@
       <thead id="tableHead"></thead>
       <tbody id="tableBody"></tbody>
     </table>
+  </div>
+
+  <div class="modal" id="dataModal">
+    <div class="modal-content">
+      <h2 id="modalTitle">Add Data</h2>
+      <form id="dataForm">
+        <!-- Form fields will be dynamically generated here -->
+      </form>
+      <div class="modal-actions">
+        <button class="btn" id="saveBtn">Save</button>
+        <button class="btn" id="cancelBtn">Cancel</button>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>

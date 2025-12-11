@@ -25,7 +25,7 @@ const state = {
 
 const icons = {
   sun: `
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <circle cx="12" cy="12" r="5"></circle>
       <line x1="12" y1="1" x2="12" y2="3"></line>
       <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -38,12 +38,12 @@ const icons = {
     </svg>
   `,
   moon: `
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M21.66 12.66C20.01 16.92 15.81 20 11 20C6.19 20 2 16.92 0.34 12.66C-1.31 8.4 2.89 5.34 7.71 5.34C12.52 5.34 16.72 8.4 18.38 12.66C19.05 14.33 19.38 16.11 19.38 17.91C19.38 18.57 19.34 19.22 19.27 19.86C20.6 18.53 21.4 16.67 21.66 14.66C21.74 14.01 21.78 13.34 21.78 12.66C21.78 12.66 21.78 12.66 21.66 12.66Z" fill="currentColor"/>
     </svg>
   `,
   edit: `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
     </svg>
   `,
@@ -168,6 +168,7 @@ function openModal(rowId = null) {
     const input = document.createElement('input');
     input.type = 'text';
     input.name = col;
+    input.classList.add('press-start-2p-regular');
     input.value = value;
     if (isIdField) {
       input.readOnly = true;

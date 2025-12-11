@@ -10,7 +10,12 @@ const data = {
     ['1007', 'Tera Ban Jaunga', 'Kabir Singh', 'Akhil Sachdeva, Tulsi Kumar', 'Sandeep Reddy Vanga', 'Akhil Sachdeva, Tulsi Kumar', 'Kumaar', 'Hindi'],
     ['1008', 'Apna Time Aayega', 'Gully Boy', 'Dub Sharma, Divine', 'Zoya Akhtar', 'Ranveer Singh, Divine', 'Divine, Ankur Tewari', 'Hindi'],
     ['1009', 'Bekhayali', 'Kabir Singh', 'Sachet-Parampara', 'Sandeep Reddy Vanga', 'Sachet Tandon', 'Irshad Kamil', 'Hindi'],
-    ['1010', 'Ghar More Pardesiya', 'Kalank', 'Pritam', 'Abhishek Varman', 'Shreya Ghoshal, Vaishali Mhade', 'Amitabh Bhattacharya', 'Hindi']
+    ['1010', 'Ghar More Pardesiya', 'Kalank', 'Pritam', 'Abhishek Varman', 'Shreya Ghoshal, Vaishali Mhade', 'Amitabh Bhattacharya', 'Hindi'],
+    ['1011', 'Ghar More Pardesiya', 'Kalank', 'Pritam', 'Abhishek Varman', 'Shreya Ghoshal, Vaishali Mhade', 'Amitabh Bhattacharya', 'Hindi'],
+    ['1012', 'Ghar More Pardesiya', 'Kalank', 'Pritam', 'Abhishek Varman', 'Shreya Ghoshal, Vaishali Mhade', 'Amitabh Bhattacharya', 'Hindi'],
+    ['1013', 'Ghar More Pardesiya', 'Kalank', 'Pritam', 'Abhishek Varman', 'Shreya Ghoshal, Vaishali Mhade', 'Amitabh Bhattacharya', 'Hindi'],
+    ['1014', 'Ghar More Pardesiya', 'Kalank', 'Pritam', 'Abhishek Varman', 'Shreya Ghoshal, Vaishali Mhade', 'Amitabh Bhattacharya', 'Hindi'],
+    ['1015', 'Ghar More Pardesiya', 'Kalank', 'Pritam', 'Abhishek Varman', 'Shreya Ghoshal, Vaishali Mhade', 'Amitabh Bhattacharya', 'Hindi'],
   ]
 };
 

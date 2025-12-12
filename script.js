@@ -197,10 +197,14 @@ function generateNewId() {
   return (maxId + 1).toString();
 }
 
-function toggleTheme() {
-  state.theme = state.theme === 'light' ? 'dark' : 'light';
+function setTheme(mode) {
+  state.theme = mode;
   document.documentElement.setAttribute('data-theme', state.theme);
   els.themeBtn.innerHTML = state.theme === 'light' ? icons.sun : icons.moon;
+}
+
+function toggleTheme() {
+  setTheme(state.theme === 'light' ? 'dark' : 'light');
 }
 
 els.tableHead.addEventListener('click', (e) => {
@@ -264,4 +268,4 @@ document.addEventListener('click', (e) => {
 
 renderColumnSelector();
 renderTable();
-toggleTheme();
+setTheme('light');

@@ -32,32 +32,32 @@
 }
 
 :root {
-    --bg-primary: #F79A19;
-    --bg-secondary: #CF0F0F;
-    --bg-hover: #E62E2E;
-    --text-primary: #000000;
-    --text-secondary: #000000;
-    --border-color: #D68A16;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --accent: #D68A16;
-    --page-background: white;
-    --retro-button-color: color-mix(in srgb, oklch(69.02% .277 332.77) 80%, oklch(16.93% .004 285.95));
-    --retro-clickable-shadow: inset 4px 4px 0px 0px color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77) 80%, oklch(16.93% .004 285.95)) 90%, #fff), inset -4px -4px 0px 0px color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77) 80%, oklch(16.93% .004 285.95)) 90%, #000), 4px 0px 0px 0px oklch(36.98% .014 302.71), 0px 4px 0px 0px oklch(36.98% .014 302.71), -4px 0px 0px 0px oklch(36.98% .014 302.71), 0px -4px 0px 0px oklch(36.98% .014 302.71), 8px 8px 0px 0px oklch(36.98% .014 302.71);
-    --header-height: 60px;
+  --bg-primary: #8A8635;
+  --bg-secondary: #CC561E;
+  --bg-hover: #AA2B1D;
+  --text-primary: #ffffff;
+  --text-secondary: #ffffff;
+  --border-color: #F0B95B;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --accent: #F0B95B;
+  --page-background: oklch(16.93% .004 285.95);
+  --retro-button-color: color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77), white 70%) 80%, oklch(16.93% .004 285.95));
+  --retro-clickable-shadow: inset 4px 4px 0px 0px color-mix(in srgb, color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77), white 70%) 80%, oklch(16.93% .004 285.95)) 90%, #fff), inset -4px -4px 0px 0px color-mix(in srgb, color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77), white 70%) 80%, oklch(16.93% .004 285.95)) 90%, #000), 4px 0px 0px 0px oklch(36.98% .014 302.71), 0px 4px 0px 0px oklch(36.98% .014 302.71), -4px 0px 0px 0px oklch(36.98% .014 302.71), 0px -4px 0px 0px oklch(36.98% .014 302.71), 8px 8px 0px 0px oklch(36.98% .014 302.71);
+  --header-height: 60px;
 }
 
 [data-theme="dark"] {
-    --bg-primary: #DD5746;
-    --bg-secondary: #8B322C;
-    --bg-hover: #a9433c;
-    --text-primary: #ffffff;
-    --text-secondary: #ffffff;
-    --border-color: #F0B95B;
-    --shadow: rgba(0, 0, 0, 0.3);
-    --accent: #F0B95B;
-    --page-background: oklch(16.93% .004 285.95);
-    --retro-button-color: color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77), white 70%) 80%, oklch(16.93% .004 285.95));
-    --retro-clickable-shadow: inset 4px 4px 0px 0px color-mix(in srgb, color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77), white 70%) 80%, oklch(16.93% .004 285.95)) 90%, #fff), inset -4px -4px 0px 0px color-mix(in srgb, color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77), white 70%) 80%, oklch(16.93% .004 285.95)) 90%, #000), 4px 0px 0px 0px oklch(36.98% .014 302.71), 0px 4px 0px 0px oklch(36.98% .014 302.71), -4px 0px 0px 0px oklch(36.98% .014 302.71), 0px -4px 0px 0px oklch(36.98% .014 302.71), 8px 8px 0px 0px oklch(36.98% .014 302.71)
+  --bg-primary: #F79A19;
+  --bg-secondary: #CF0F0F;
+  --bg-hover: #E62E2E;
+  --text-primary: #000000;
+  --text-secondary: #000000;
+  --border-color: #D68A16;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --accent: #D68A16;
+  --page-background: white;
+  --retro-button-color: color-mix(in srgb, oklch(69.02% .277 332.77) 80%, oklch(16.93% .004 285.95));
+  --retro-clickable-shadow: inset 4px 4px 0px 0px color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77) 80%, oklch(16.93% .004 285.95)) 90%, #fff), inset -4px -4px 0px 0px color-mix(in srgb, color-mix(in srgb, oklch(69.02% .277 332.77) 80%, oklch(16.93% .004 285.95)) 90%, #000), 4px 0px 0px 0px oklch(36.98% .014 302.71), 0px 4px 0px 0px oklch(36.98% .014 302.71), -4px 0px 0px 0px oklch(36.98% .014 302.71), 0px -4px 0px 0px oklch(36.98% .014 302.71), 8px 8px 0px 0px oklch(36.98% .014 302.71);
 }
 
 body {

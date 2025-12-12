@@ -355,9 +355,9 @@ tbody tr:hover {
   padding: 0.25rem;
 }
 
-.action-btn svg {
-  width: 14px;
-  height: 14px;
+.icon {
+  width: 24px;
+  height: 24px;
 }
 
 @media (max-width: 768px) {

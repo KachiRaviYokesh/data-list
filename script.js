@@ -111,7 +111,7 @@ function renderTable() {
   const filtered = filterRows();
   els.tableBody.innerHTML = filtered.map(row => {
     const rowId = row[0];
-    const cells = indices.map(idx => `<td>${row[idx]}</td>`).join('');
+    const cells = indices.map(idx => `<td><span>${row[idx]}</span></td>`).join('');
     return `<tr data-id="${rowId}">
               ${cells}
               <td>

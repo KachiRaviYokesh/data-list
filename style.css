@@ -5,14 +5,14 @@
   font-family: "Press Start 2P", system-ui;
   font-weight: 400;
   font-style: normal;
-  font-size: 0.5rem;
+  font-size: 0.75rem;
 }
     
-.monospace {
+/* .monospace {
     font-family: monospace;
     font-size: 0.75rem;
     font-weight: 600;
-}
+} */
 
 .honk-font {
     font-family: "Honk", system-ui;
@@ -209,8 +209,7 @@ th {
     cursor: pointer;
     user-select: none;
     transition: background 0.2s;
-    transform: scaleY(1.5);
-    letter-spacing: 0.75px;
+    letter-spacing: 0.5px;
 }
 
 th:hover {
@@ -223,8 +222,14 @@ th.active {
 }
 
 td {
-  padding: 0.5rem 0.75rem;
-  border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+td span {
+    transform: scaleY(1.5);
+    letter-spacing: 0.5px;
+    font-size: 0.75rem;
 }
 
 tbody tr:hover {
@@ -337,7 +342,7 @@ tbody tr:hover {
   border-radius: 4px;
   background: var(--bg-secondary);
   color: var(--text-primary);
-  font-size: 0.85rem;
+  /* font-size: 0.85rem; */
 }
 
 .action-btns {

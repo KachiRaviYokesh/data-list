@@ -75,14 +75,8 @@ function filterRows() {
   });
 }
 
-function renderTable() {
-  const cols = getVisibleColumns();
+function renderTableBody() {
   const indices = getVisibleIndices();
-  
-  const headerRow = `<tr>${cols.map(col => `<th data-col="${col}">${col}</th>`).join('')}<th>Actions</th></tr>`;
-  const searchRow = state.searchVisible ? `<tr>${cols.map(col => `<th><input type="text" class="column-search-input" data-col="${col}" placeholder="Search..." value="${state.columnSearchValues[col] || ''}"></th>`).join('')}<th></th></tr>` : '';
-  els.tableHead.innerHTML = headerRow + searchRow;
-
   const filtered = filterRows();
   els.tableBody.innerHTML = filtered.map(row => {
     const rowId = row[0];
@@ -97,7 +91,18 @@ function renderTable() {
               </td>
             </tr>`;
   }).join('');
+}
 
+function renderTableHeader() {
+    const cols = getVisibleColumns();
+    const headerRow = `<tr>${cols.map(col => `<th data-col="${col}">${col}</th>`).join('')}<th>Actions</th></tr>`;
+    const searchRow = state.searchVisible ? `<tr>${cols.map(col => `<th><input type="text" class="column-search-input" data-col="${col}" placeholder="Search..." value="${state.columnSearchValues[col] || ''}"></th>`).join('')}<th></th></tr>` : '';
+    els.tableHead.innerHTML = headerRow + searchRow;
+}
+
+function renderTable() {
+  renderTableHeader();
+  renderTableBody();
   updateStickyClass();
 }
 
@@ -199,7 +204,7 @@ els.tableHead.addEventListener('input', (e) => {
   const col = input.dataset.col;
   if (col) {
     state.columnSearchValues[col] = input.value;
-    renderTable();
+    renderTableBody();
   }
 });
 

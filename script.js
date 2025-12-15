@@ -21,11 +21,11 @@ const data = {
 
 const state = {
   visibleColumns: new Set(data.columns),
-  activeSearchColumn: null,
-  searchValue: '',
+  columnSearchValues: {},
   stickyEnabled: true,
   editingRowId: null,
-  theme: 'light'
+  theme: 'light',
+  searchVisible: true
 };
 
 const icons = {
@@ -43,9 +43,7 @@ const els = {
   columnBtn: document.getElementById('columnBtn'),
   stickyBtn: document.getElementById('stickyBtn'),
   themeBtn: document.getElementById('themeBtn'),
-  searchPanel: document.getElementById('searchPanel'),
-  searchInput: document.getElementById('searchInput'),
-  searchLabel: document.getElementById('searchLabel'),
+  toggleSearchBtn: document.getElementById('toggleSearchBtn'),
   addBtn: document.getElementById('addBtn'),
   dataModal: document.getElementById('dataModal'),
   modalTitle: document.getElementById('modalTitle'),
@@ -63,23 +61,27 @@ function getVisibleIndices() {
 }
 
 function filterRows() {
-  if (!state.activeSearchColumn || !state.searchValue) {
+  const searchTerms = Object.entries(state.columnSearchValues).filter(([, value]) => value);
+
+  if (searchTerms.length === 0) {
     return data.rows;
   }
 
-  const colIndex = data.columns.indexOf(state.activeSearchColumn);
-  return data.rows.filter(row => 
-    row[colIndex].toLowerCase().includes(state.searchValue.toLowerCase())
-  );
+  return data.rows.filter(row => {
+    return searchTerms.every(([column, searchTerm]) => {
+      const colIndex = data.columns.indexOf(column);
+      return row[colIndex].toLowerCase().includes(searchTerm.toLowerCase());
+    });
+  });
 }
 
 function renderTable() {
   const cols = getVisibleColumns();
   const indices = getVisibleIndices();
   
-  els.tableHead.innerHTML = `<tr>${cols.map(col => 
-    `<th data-col="${col}" class="${state.activeSearchColumn === col ? 'active' : ''}">${col}</th>`
-  ).join('')}<th>Actions</th></tr>`;
+  const headerRow = `<tr>${cols.map(col => `<th data-col="${col}">${col}</th>`).join('')}<th>Actions</th></tr>`;
+  const searchRow = state.searchVisible ? `<tr>${cols.map(col => `<th><input type="text" class="column-search-input" data-col="${col}" placeholder="Search..." value="${state.columnSearchValues[col] || ''}"></th>`).join('')}<th></th></tr>` : '';
+  els.tableHead.innerHTML = headerRow + searchRow;
 
   const filtered = filterRows();
   els.tableBody.innerHTML = filtered.map(row => {
@@ -111,23 +113,6 @@ function renderColumnSelector() {
 function updateStickyClass() {
   els.dataTable.classList.toggle('sticky-first', state.stickyEnabled);
   els.dataTable.classList.toggle('sticky-last', state.stickyEnabled);
-}
-
-function showSearchPanel(column) {
-  state.activeSearchColumn = column;
-  state.searchValue = '';
-  els.searchLabel.textContent = `Search ${column}`;
-  els.searchInput.value = '';
-  els.searchPanel.classList.add('show');
-  els.searchInput.focus();
-  renderTable();
-}
-
-function hideSearchPanel() {
-  state.activeSearchColumn = null;
-  state.searchValue = '';
-  els.searchPanel.classList.remove('show');
-  renderTable();
 }
 
 function openModal(rowId = null) {
@@ -207,23 +192,15 @@ function toggleTheme() {
   setTheme(state.theme === 'light' ? 'dark' : 'light');
 }
 
-els.tableHead.addEventListener('click', (e) => {
-  const th = e.target.closest('th');
-  if (!th) return;
+els.tableHead.addEventListener('input', (e) => {
+  const input = e.target.closest('.column-search-input');
+  if (!input) return;
   
-  const col = th.dataset.col;
-  if (!col) return;
-
-  if (state.activeSearchColumn === col) {
-    hideSearchPanel();
-  } else {
-    showSearchPanel(col);
+  const col = input.dataset.col;
+  if (col) {
+    state.columnSearchValues[col] = input.value;
+    renderTable();
   }
-});
-
-els.searchInput.addEventListener('input', (e) => {
-  state.searchValue = e.target.value;
-  renderTable();
 });
 
 els.columnBtn.addEventListener('click', (e) => {
@@ -238,8 +215,8 @@ els.columnDropdown.addEventListener('click', (e) => {
       state.visibleColumns.add(col);
     } else {
       state.visibleColumns.delete(col);
-      if (state.activeSearchColumn === col) {
-        hideSearchPanel();
+      if (state.columnSearchValues[col]) {
+        delete state.columnSearchValues[col];
       }
     }
     renderTable();
@@ -249,6 +226,11 @@ els.columnDropdown.addEventListener('click', (e) => {
 els.stickyBtn.addEventListener('click', () => {
   state.stickyEnabled = !state.stickyEnabled;
   updateStickyClass();
+});
+
+els.toggleSearchBtn.addEventListener('click', () => {
+  state.searchVisible = !state.searchVisible;
+  renderTable();
 });
 
 els.themeBtn.addEventListener('click', toggleTheme);

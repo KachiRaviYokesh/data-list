@@ -147,7 +147,7 @@ function openModal(rowId = null) {
   });
 
   els.modalTitle.textContent = rowId ? 'Edit Data' : 'Add Data';
-  els.dataModal.style.display = 'block';
+  els.dataModal.style.display = 'flex';
 }
 
 function closeModal() {

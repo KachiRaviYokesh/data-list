@@ -269,6 +269,8 @@ tbody tr:hover {
 
 .modal {
   display: none;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -281,11 +283,10 @@ tbody tr:hover {
 
 .modal-content {
   background-color: var(--bg-primary);
-  margin: 15% auto;
+  margin: auto;
   padding: 20px;
   border: 1px solid var(--border-color);
-  width: 80%;
-  max-width: 500px;
+  width: 60%;
   border-radius: 4px;
   box-shadow: 0 4px 8px var(--shadow);
 }
@@ -352,7 +353,7 @@ tbody tr:hover {
 
   .modal-content {
     width: 90%;
-    margin: 10% auto;
+    margin: auto;
   }
 
   #dataForm {

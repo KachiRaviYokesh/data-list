@@ -96,7 +96,7 @@ function renderTableBody() {
 function renderTableHeader() {
     const cols = getVisibleColumns();
     const headerRow = `<tr>${cols.map(col => `<th data-col="${col}">${col}</th>`).join('')}<th>Actions</th></tr>`;
-    const searchRow = state.searchVisible ? `<tr>${cols.map(col => `<th><input type="text" class="column-search-input" data-col="${col}" placeholder="Search..." value="${state.columnSearchValues[col] || ''}"></th>`).join('')}<th></th></tr>` : '';
+    const searchRow = state.searchVisible ? `<tr>${cols.map(col => `<th><input type="text" class="column-search-input press-start-2p-regular" data-col="${col}" placeholder="Search..." value="${state.columnSearchValues[col] || ''}"></th>`).join('')}<th></th></tr>` : '';
     els.tableHead.innerHTML = headerRow + searchRow;
 }
 

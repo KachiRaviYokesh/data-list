@@ -270,7 +270,7 @@ tbody tr:hover {
 .modal {
   display: none;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   position: fixed;
   z-index: 1000;
   left: 0;
@@ -283,17 +283,37 @@ tbody tr:hover {
 
 .modal-content {
   background-color: var(--bg-primary);
-  margin: auto;
   padding: 20px;
   border: 1px solid var(--border-color);
-  width: 60%;
-  border-radius: 4px;
+  width: 50%;
+  height: 100%;
   box-shadow: 0 4px 8px var(--shadow);
+  position: relative;
 }
 
-.modal-content h2 {
-    margin-bottom: 1.5rem;
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h2 {
     line-height: 1.25rem;
+}
+
+.modal-header .close-button {
+  color: var(--text-primary);
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-header .close-button:hover,
+.modal-header .close-button:focus {
+  color: var(--bg-hover);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal-actions {

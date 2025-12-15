@@ -49,7 +49,8 @@ const els = {
   modalTitle: document.getElementById('modalTitle'),
   dataForm: document.getElementById('dataForm'),
   saveBtn: document.getElementById('saveBtn'),
-  cancelBtn: document.getElementById('cancelBtn')
+  cancelBtn: document.getElementById('cancelBtn'),
+  closeModalBtn: document.getElementById('closeModalBtn')
 };
 
 function getVisibleColumns() {
@@ -243,6 +244,7 @@ els.themeBtn.addEventListener('click', toggleTheme);
 els.addBtn.addEventListener('click', () => openModal());
 els.saveBtn.addEventListener('click', saveData);
 els.cancelBtn.addEventListener('click', closeModal);
+els.closeModalBtn.addEventListener('click', closeModal);
 
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.column-selector')) {

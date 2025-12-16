@@ -46,6 +46,7 @@ const els = {
   toggleSearchBtn: document.getElementById('toggleSearchBtn'),
   addBtn: document.getElementById('addBtn'),
   dataModal: document.getElementById('dataModal'),
+  modalContent: document.querySelector('.modal-content'),
   modalTitle: document.getElementById('modalTitle'),
   dataForm: document.getElementById('dataForm'),
   saveBtn: document.getElementById('saveBtn'),
@@ -148,11 +149,13 @@ function openModal(rowId = null) {
   });
 
   els.modalTitle.textContent = rowId ? 'Edit Data' : 'Add Data';
-  els.dataModal.style.display = 'flex';
+  els.dataModal.classList.add('show');
+  els.modalContent.classList.add('show');
 }
 
 function closeModal() {
-  els.dataModal.style.display = 'none';
+  els.dataModal.classList.remove('show');
+  els.modalContent.classList.remove('show');
   state.editingRowId = null;
 }
 

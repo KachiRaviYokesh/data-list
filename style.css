@@ -156,6 +156,11 @@ body {
   color: var(--text-primary);
 }
 
+.column-search-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7; /* Optional: Make it slightly transparent */
+}
+
 .column-search-input:focus {
   outline: none;
   border-color: var(--accent);
